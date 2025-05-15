@@ -17,17 +17,20 @@ const App = () => {
 
   const handleNextAnecdote = () => {
     const randomIndex = Math.floor(Math.random() * anecdotes.length);
+    console.log(`Next anecdote selected: Index ${randomIndex}, Text: "${anecdotes[randomIndex]}"`);
     setSelected(randomIndex);
   };
 
   const handleVote = () => {
     const copy = [...votes];
     copy[selected] += 1;
+    console.log(`Vote added to: Index ${selected}, Text: "${anecdotes[selected]}", Total Votes: ${copy[selected]}`);
     setVotes(copy);
   };
 
   const maxVotes = Math.max(...votes);
   const bestAnecdoteIndex = votes.indexOf(maxVotes);
+  console.log(`Current best anecdote: Index ${bestAnecdoteIndex}, Votes: ${maxVotes}`);
 
   return (
     <div style={{ fontFamily: 'sans-serif', padding: '1rem' }}>
